@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grabage/components/sidebar.dart';
 import 'package:grabage/components/history.dart';
-import 'package:grabage/components/appbar.dart';
+import 'package:grabage/components/sidebar.dart';
 import 'package:grabage/constant.dart';
 
 class RecyclingHistoryPage extends StatefulWidget {
@@ -34,11 +33,11 @@ class _RecyclingHistoryPageState extends State<RecyclingHistoryPage> {
         },
         child: Scaffold(
           appBar: AppBar(
-    foregroundColor: titleColor,
-    backgroundColor: green,
-    title: const Center(child: Text('Recycling History'))),
+              foregroundColor: titleColor,
+              backgroundColor: green,
+              title: const Center(child: Text('Recycling History'))),
           body: Center(
-            child: SingleChildScrollView (
+            child: SingleChildScrollView(
               child: Column(
                 children: [
                   buildHistory(context, "ur mom", "8 Jul 2022", "22"),
