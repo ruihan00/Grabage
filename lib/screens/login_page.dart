@@ -144,11 +144,11 @@ class _LoginPageState extends State<LoginPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const SizedBox(
-                        height: 24.0,
+                        height: 0.0,
                       ),
                       Container(
-                        width: 150,
-                        height: 150,
+                        width: 250,
+                        height: 250,
                         child: const Image(
                           image: AssetImage('assets/images/logo.png'),
                         ),
@@ -300,7 +300,7 @@ class _LoginPageState extends State<LoginPage> {
                         alignment: Alignment.center,
                         child: Column(children: [
                           const SizedBox(
-                            height: 15.0,
+                            height: 25.0,
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -336,7 +336,7 @@ class _LoginPageState extends State<LoginPage> {
                         alignment: Alignment.center,
                         child: Column(children: [
                           const SizedBox(
-                            height: 10.0,
+                            height: 5.0,
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16.0),
