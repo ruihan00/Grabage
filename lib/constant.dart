@@ -20,7 +20,7 @@ const Color mainColor = Color(0xFFFDF5E6);
 const Color titleColor = Color(0xFF3B3B3B);
 const Color red = Color(0xFFdc5445);
 const Color yellow = Color(0xFFffdc81);
-const Color cream = Color(0xFFfff9f6);
+const Color cream = Color(0xffd9e3d3);
 const Color green = Color(0xff8ba986);
 
 const LinearGradient loginBackground = LinearGradient(
