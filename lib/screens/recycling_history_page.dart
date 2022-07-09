@@ -3,15 +3,15 @@ import 'package:grabage/components/sidebar.dart';
 import 'package:grabage/components/appbar.dart';
 import 'package:grabage/constant.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-  static const String id = 'home_screen';
+class RecyclingHistoryPage extends StatefulWidget {
+  const RecyclingHistoryPage({Key? key}) : super(key: key);
+  static const String id = 'about_us_screen';
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<RecyclingHistoryPage> createState() => _RecyclingHistoryPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _RecyclingHistoryPageState extends State<RecyclingHistoryPage> {
   @override
   void setState(fn) {
     if (mounted) {
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
         child: Scaffold(
           appBar: buildAppbar(context),
           body: const Center(
-            child: Text('Home Page'),
+            child: Text('Recycling History Page!'),
           ),
           drawer: buildSidebar(context),
         ),

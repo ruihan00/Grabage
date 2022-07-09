@@ -3,15 +3,15 @@ import 'package:grabage/components/sidebar.dart';
 import 'package:grabage/components/appbar.dart';
 import 'package:grabage/constant.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-  static const String id = 'home_screen';
+class RewardsPage extends StatefulWidget {
+  const RewardsPage({Key? key}) : super(key: key);
+  static const String id = 'about_us_screen';
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<RewardsPage> createState() => _RewardsPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _RewardsPageState extends State<RewardsPage> {
   @override
   void setState(fn) {
     if (mounted) {
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
         child: Scaffold(
           appBar: buildAppbar(context),
           body: const Center(
-            child: Text('Home Page'),
+            child: Text('Rewards Page!'),
           ),
           drawer: buildSidebar(context),
         ),
