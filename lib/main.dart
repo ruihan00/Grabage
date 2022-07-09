@@ -10,8 +10,8 @@ void main() async {
   if (Firebase.apps.isEmpty) {
     await Firebase.initializeApp(
       options: const FirebaseOptions(
-        apiKey: 'AIzaSyDooSUGSf63Ghq02_iIhtnmwMDs4HlWS6c',
-        appId: '1:406099696497:ios:acd9c8e17b5e620e3574d0',
+        apiKey: 'AIzaSyAt0o2FBepZg7cOcdOTcYjIm_sqiloC9MM',
+        appId: '1:574985743484:ios:7bd2ca63d87774b4e2edf9',
         messagingSenderId: '406099696497',
         projectId: 'flutterfire-e2e-tests',
         databaseURL:
