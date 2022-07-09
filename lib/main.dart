@@ -4,6 +4,9 @@ import 'package:grabage/screens/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:grabage/constant.dart';
+import 'package:grabage/services/auth.dart';
+
+import 'components/sidebar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,9 +51,14 @@ class MyApp extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CircularProgressIndicator();
           } else if (snapshot.hasData) {
-            return const HomePage();
+            return Scaffold();
+            // return Sidebar(
+            //   auth: Auth(),
+            // );
+            // return const HomePage(beanUser: _usersPageProvider.user,);
           } else {
-            return LoginPage();
+            return LoginPage(auth: Auth(),
+                  userData: null,);
           }
         },
       ),

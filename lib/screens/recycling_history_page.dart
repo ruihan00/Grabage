@@ -36,7 +36,7 @@ class _RecyclingHistoryPageState extends State<RecyclingHistoryPage> {
           body: const Center(
             child: Text('Recycling History Page!'),
           ),
-          drawer: buildSidebar(context),
+          // drawer: buildSidebar(context),
         ),
       ),
     );

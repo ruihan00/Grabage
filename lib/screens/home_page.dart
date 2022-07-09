@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:grabage/components/sidebar.dart';
 import 'package:grabage/components/appbar.dart';
 import 'package:grabage/constant.dart';
+import 'package:grabage/models/user_model.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key, required this.beanUser}) : super(key: key);
   static const String id = 'home_screen';
+  final BeanUser? beanUser;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -34,9 +36,9 @@ class _HomePageState extends State<HomePage> {
         child: Scaffold(
           appBar: buildAppbar(context),
           body: const Center(
-            child: Text('Home Page'),
+            // child: Text('Home Page: ${widget.beanUser!.name}'),
           ),
-          drawer: buildSidebar(context),
+          // drawer: buildSidebar(context),
         ),
       ),
     );

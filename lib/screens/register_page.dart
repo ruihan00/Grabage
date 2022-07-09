@@ -4,14 +4,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:grabage/constant.dart';
 import 'package:grabage/services/validators.dart';
-
+import 'package:grabage/services/user_data.dart';
+import 'package:grabage/services/auth.dart';
 
 EmailAndPasswordValidator test = EmailAndPasswordValidator();
 
 class RegisterPage extends StatefulWidget
     with EmailAndPasswordValidator {
-  RegisterPage({Key? key}) : super(key: key);
+  RegisterPage({Key? key, required this.auth, this.userData}) : super(key: key);
   static const String id = 'register_screen';
+  final AuthBase auth;
+  final UserData? userData;
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -19,6 +22,7 @@ class RegisterPage extends StatefulWidget
 
 class _RegisterPageState extends State<RegisterPage>
     with EmailAndPasswordValidator {
+  final UserData userData = UserData();
   bool? _passwordVisible;
   bool? _repeatPasswordVisible;
   final TextEditingController _nameController = TextEditingController();
@@ -46,11 +50,14 @@ class _RegisterPageState extends State<RegisterPage>
   void _submit() async {
     if (_errorCheck()) {
       try {
-        UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: _email,
             password: _password
         );
-        print("acc created");
+        userData.createNewUser(
+            widget.auth.currentUser.uid,
+            _name,
+            _email);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
           print('The password provided is too weak.');

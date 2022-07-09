@@ -5,16 +5,21 @@ import 'package:grabage/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:grabage/screens/register_page.dart';
 import 'package:grabage/services/validators.dart';
+import 'package:grabage/services/user_data.dart';
+import 'package:grabage/services/auth.dart';
 
 class LoginPage extends StatefulWidget with EmailAndPasswordValidator {
-  LoginPage({Key? key}) : super(key: key);
+  LoginPage({Key? key, required this.auth, this.userData}) : super(key: key);
   static const String id = 'login_screen';
+  final AuthBase auth;
+  final UserData? userData;
 
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final UserData userData = UserData();
   bool? _passwordVisible;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -33,9 +38,7 @@ class _LoginPageState extends State<LoginPage> {
   void _submit() async {
     if (_errorCheck()) {
       try {
-        UserCredential userCredential = await FirebaseAuth.instance
-            .signInWithEmailAndPassword(email: _email, password: _password);
-        print("signed in");
+        await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {
           showDialog(
@@ -144,11 +147,11 @@ class _LoginPageState extends State<LoginPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const SizedBox(
-                        height: 24.0,
+                        height: 0.0,
                       ),
                       Container(
-                        width: 150,
-                        height: 150,
+                        width: 250,
+                        height: 250,
                         child: const Image(
                           image: AssetImage('assets/images/logo.png'),
                         ),
@@ -300,7 +303,7 @@ class _LoginPageState extends State<LoginPage> {
                         alignment: Alignment.center,
                         child: Column(children: [
                           const SizedBox(
-                            height: 15.0,
+                            height: 25.0,
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -336,7 +339,7 @@ class _LoginPageState extends State<LoginPage> {
                         alignment: Alignment.center,
                         child: Column(children: [
                           const SizedBox(
-                            height: 10.0,
+                            height: 5.0,
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -351,7 +354,7 @@ class _LoginPageState extends State<LoginPage> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              RegisterPage()));
+                                              RegisterPage(auth: widget.auth, userData: null)));
                                 },
                                 minWidth: 157.0,
                                 height: 40.0,

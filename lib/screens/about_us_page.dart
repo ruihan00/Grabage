@@ -36,7 +36,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
           body: const Center(
             child: Text('About Us Page!'),
           ),
-          drawer: buildSidebar(context),
+          // drawer: buildSidebar(context),
         ),
       ),
     );

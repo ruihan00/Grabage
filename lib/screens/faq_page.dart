@@ -36,7 +36,7 @@ class _FaqPageState extends State<FaqPage> {
           body: const Center(
             child: Text('FAQ Page!'),
           ),
-          drawer: buildSidebar(context),
+          // drawer: buildSidebar(context),
         ),
       ),
     );

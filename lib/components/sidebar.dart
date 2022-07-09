@@ -1,68 +1,107 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:grabage/constant.dart';
 import 'package:grabage/screens/recycling_history_page.dart';
+import 'package:provider/provider.dart';
 
+import '../models/tab_items.dart';
+import '../providers/authentication_provider.dart';
+import '../providers/user_page_provider.dart';
 import '../screens/about_us_page.dart';
 import '../screens/faq_page.dart';
 import '../screens/home_page.dart';
 import '../screens/rewards_page.dart';
+import '../services/auth.dart';
+import 'package:grabage/services/database_service.dart';
 
-ClipRRect buildSidebar(context) {
-  return ClipRRect(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(50.0), bottom: Radius.circular(50.0)),
-  child: Drawer(
-    child: ListView(
-      padding: EdgeInsets.zero,
-      children: [
-        const DrawerHeader(
-          decoration: BoxDecoration(
-            gradient: loginBackground,
-          ),
-          child: Text('Wesho', style: TextStyle(fontSize: 25),),
+import 'actual_sidebar.dart';
+
+class Sidebar extends StatefulWidget {
+  const Sidebar({Key? key, required this.auth})
+      : super(key: key);
+  final AuthBase auth;
+
+  @override
+  State<Sidebar> createState() =>
+      _SidebarState();
+}
+
+class _SidebarState extends State<Sidebar> {
+  TabItem _currentTab = TabItem.home;
+  late UsersPageProvider _usersPageProvider;
+
+  void _select(TabItem tabItem) {
+    setState(() {
+      _currentTab = tabItem;
+    });
+  }
+
+  @override
+  void initState() {
+    _setup();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => UsersPageProvider((FirebaseAuth.instance.currentUser?.uid)!),
         ),
-        ListTile(
-          title: const Text('Home'),
-          // Update the state of the app
-          // ...
-          // Then close the drawer
-          onTap: () {
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => const HomePage()));
-          },
-        ),
-        ListTile(
-          title: const Text('Recycling History'),
-          // Update the state of the app
-          // ...
-          // Then close the drawer
-          onTap: () {
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => const RecyclingHistoryPage()));
-          },
-        ),
-        ListTile(
-          title: const Text('Rewards'),
-          onTap: () {
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => const RewardsPage()));
-          },
-        ),
-        ListTile(
-          title: const Text('FAQ'),
-          onTap: () {
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => const FaqPage()));
-          },
-        ),
-        ListTile(
-          title: const Text('About Us'),
-          onTap: () {
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => const AboutUsPage()));
-          },
-        ),
+        ChangeNotifierProvider<AuthenticationProvider>(
+            create: (BuildContext context) {
+              return AuthenticationProvider();
+            })
       ],
-    ),
-  ),
-  );
+      child: _buildUI(),
+    );
+  }
+
+
+  Widget _buildUI() {
+    return Builder(
+      builder: (BuildContext _context) {
+        _usersPageProvider = _context.watch<UsersPageProvider>();
+        if (_usersPageProvider.user != null) {
+          return CupertinoHomeScaffold(
+            currentTab: _currentTab,
+            onSelectTab: _select,
+            auth: widget.auth,
+            beanUser: _usersPageProvider.user,
+          );
+        } else {
+          return Container(
+            height: MediaQuery.of(context).size.height,
+            child: const CircularProgressIndicator(),
+          );
+        }
+      },
+    );
+  }
+
+  Future<void> _setup() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    _registerService();
+  }
+
+  void _registerService() {
+    try {
+      if (!GetIt.I.isRegistered<DatabaseService>()) {
+        print("Trying to register navigator");
+        GetIt.instance.registerSingleton<DatabaseService>(
+          DatabaseService(),
+        );
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 }

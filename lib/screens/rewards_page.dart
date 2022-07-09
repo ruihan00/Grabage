@@ -36,7 +36,7 @@ class _RewardsPageState extends State<RewardsPage> {
           body: const Center(
             child: Text('Rewards Page!'),
           ),
-          drawer: buildSidebar(context),
+          // drawer: buildSidebar(context),
         ),
       ),
     );
