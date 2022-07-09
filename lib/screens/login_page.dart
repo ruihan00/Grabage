@@ -1,6 +1,6 @@
 import 'dart:math';
 
-// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:grabage/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:grabage/screens/register_page.dart';
@@ -32,56 +32,57 @@ class _LoginPageState extends State<LoginPage> {
   bool logoutUser = false;
 
   void _submit() async {
-    // if (_errorCheck()) {
-    //   try {
-    //     UserCredential userCredential = await FirebaseAuth.instance
-    //         .signInWithEmailAndPassword(email: _email, password: _password);
-    //     // The following line makes state change less laggy, but it defeats the purpose of listening to auth state changes
-    //     // Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomePage(name: 'Hi',)),);
-    //   } on FirebaseAuthException catch (e) {
-    //     if (e.code == 'user-not-found') {
-    //       showDialog(
-    //           context: context,
-    //           builder: (context) {
-    //             return Dialog(
-    //               shape: RoundedRectangleBorder(
-    //                   borderRadius: BorderRadius.circular(40)),
-    //               elevation: 16,
-    //               child: Container(
-    //                 child: ListView(
-    //                   shrinkWrap: true,
-    //                   children: <Widget>[
-    //                     Text(
-    //                         "This email is not registered. Please create a new account.")
-    //                   ],
-    //                 ),
-    //               ),
-    //             );
-    //           });
-    //       print('No user found for that email.');
-    //     } else if (e.code == 'wrong-password') {
-    //       showDialog(
-    //           context: context,
-    //           builder: (context) {
-    //             return Dialog(
-    //               shape: RoundedRectangleBorder(
-    //                   borderRadius: BorderRadius.circular(40)),
-    //               elevation: 16,
-    //               child: Container(
-    //                 child: ListView(
-    //                   shrinkWrap: true,
-    //                   children: <Widget>[
-    //                     Text(
-    //                         "Incorrect password for this user. Please try again.")
-    //                   ],
-    //                 ),
-    //               ),
-    //             );
-    //           });
-    //       print('Wrong password provided for that user.');
-    //     }
-    //   }
-    // }
+    if (_errorCheck()) {
+      try {
+        UserCredential userCredential = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: _email, password: _password);
+        // The following line makes state change less laggy, but it defeats the purpose of listening to auth state changes
+        // Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomePage(name: 'Hi',)),);
+        print("yay");
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'user-not-found') {
+          showDialog(
+              context: context,
+              builder: (context) {
+                return Dialog(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40)),
+                  elevation: 16,
+                  child: Container(
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: <Widget>[
+                        Text(
+                            "This email is not registered. Please create a new account.")
+                      ],
+                    ),
+                  ),
+                );
+              });
+          print('No user found for that email.');
+        } else if (e.code == 'wrong-password') {
+          showDialog(
+              context: context,
+              builder: (context) {
+                return Dialog(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40)),
+                  elevation: 16,
+                  child: Container(
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: <Widget>[
+                        Text(
+                            "Incorrect password for this user. Please try again.")
+                      ],
+                    ),
+                  ),
+                );
+              });
+          print('Wrong password provided for that user.');
+        }
+      }
+    }
     setState(() {
       _submitted = true;
     });
