@@ -159,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
                         shadowColor: Colors.black,
                         // color: Colors.transparent,
                         borderRadius:
-                        const BorderRadius.all(Radius.circular(15)),
+                            const BorderRadius.all(Radius.circular(15)),
                         child: TextField(
                           focusNode: _emailFocusNode,
                           controller: _emailController,
@@ -167,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
                           textAlign: TextAlign.start,
                           decoration: signupTextFieldDecoration.copyWith(
                             errorText: _submitted &&
-                                !widget.emailValidator.isValid(_email)
+                                    !widget.emailValidator.isValid(_email)
                                 ? widget.invalidEmailErrorText
                                 : null,
                             errorStyle: const TextStyle(
@@ -179,7 +179,7 @@ class _LoginPageState extends State<LoginPage> {
                               padding: const EdgeInsets.only(left: 15.0),
                               child: Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Visibility(
@@ -222,7 +222,7 @@ class _LoginPageState extends State<LoginPage> {
                         elevation: 8,
                         shadowColor: Colors.black,
                         borderRadius:
-                        const BorderRadius.all(Radius.circular(15)),
+                            const BorderRadius.all(Radius.circular(15)),
                         child: TextField(
                           focusNode: _passwordFocusNode,
                           controller: _passwordController,
@@ -231,7 +231,7 @@ class _LoginPageState extends State<LoginPage> {
                           onChanged: (password) => _updateState(),
                           decoration: signupTextFieldDecoration.copyWith(
                             errorText: _submitted &&
-                                !widget.passwordValidator.isValid(_password)
+                                    !widget.passwordValidator.isValid(_password)
                                 ? widget.invalidPasswordErrorText
                                 : null,
                             errorStyle: const TextStyle(
@@ -243,7 +243,7 @@ class _LoginPageState extends State<LoginPage> {
                               padding: const EdgeInsets.only(left: 15.0),
                               child: Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Visibility(
@@ -258,13 +258,13 @@ class _LoginPageState extends State<LoginPage> {
                                   IconButton(
                                     icon: _passwordVisible!
                                         ? const Icon(
-                                      Icons.visibility,
-                                      color: Colors.black,
-                                    )
+                                            Icons.visibility,
+                                            color: Colors.black,
+                                          )
                                         : const Icon(
-                                      Icons.visibility_off,
-                                      color: Colors.black,
-                                    ),
+                                            Icons.visibility_off,
+                                            color: Colors.black,
+                                          ),
                                     onPressed: () {
                                       setState(() {
                                         _passwordVisible = !_passwordVisible!;
@@ -393,7 +393,7 @@ class _LoginPageState extends State<LoginPage> {
             fontSize: 16.0,
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.bold,
-            color: Colors.white),
+            color: green),
       ),
     );
   }
