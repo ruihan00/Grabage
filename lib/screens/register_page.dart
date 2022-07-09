@@ -12,7 +12,6 @@ class RegisterPage extends StatefulWidget
     with EmailAndPasswordValidator {
   RegisterPage({Key? key}) : super(key: key);
   static const String id = 'register_screen';
-  static const String route = '/register';
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -51,10 +50,29 @@ class _RegisterPageState extends State<RegisterPage>
             email: _email,
             password: _password
         );
+        print("acc created");
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
           print('The password provided is too weak.');
         } else if (e.code == 'email-already-in-use') {
+          showDialog(
+              context: context,
+              builder: (context) {
+                return Dialog(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40)),
+                  elevation: 16,
+                  child: Container(
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: <Widget>[
+                        Text(
+                            "This email is already linked to an existing account, please register using another email!")
+                      ],
+                    ),
+                  ),
+                );
+              });
           print('The account already exists for that email.');
         }
       } catch (e) {

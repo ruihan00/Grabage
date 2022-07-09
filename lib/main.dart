@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:grabage/screens/home_page.dart';
 import 'package:grabage/screens/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:grabage/constant.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +42,18 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.lightGreen,
         fontFamily: 'Poppins',
       ),
-      home: LoginPage()
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (BuildContext context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          } else if (snapshot.hasData) {
+            return const HomePage();
+          } else {
+            return LoginPage();
+          }
+        },
+      ),
     );
   }
 }

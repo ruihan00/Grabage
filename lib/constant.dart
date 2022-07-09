@@ -17,14 +17,14 @@ const MaterialColor redBase = MaterialColor(
 );
 
 const Color mainColor = Color(0xFFFDF5E6);
-const Color titleColor = Color(0xFF555454);
+const Color titleColor = Color(0xFF3B3B3B);
 const Color red = Color(0xFFdc5445);
 const Color yellow = Color(0xFFffdc81);
 const Color cream = Color(0xFFfff9f6);
-const Color green = Color(0xff93bc3f);
+const Color green = Color(0xffa2c954);
 
 const LinearGradient loginBackground = LinearGradient(
-  colors: <Color>[Color(0xff93bc3f), Color(0xffc8dda4)],
+  colors: <Color>[Color(0xffc8dda4), Color(0xff93bc3f)],
   begin: Alignment.topCenter,
   end: Alignment.bottomCenter,
 );

@@ -9,7 +9,6 @@ import 'package:grabage/services/validators.dart';
 class LoginPage extends StatefulWidget with EmailAndPasswordValidator {
   LoginPage({Key? key}) : super(key: key);
   static const String id = 'login_screen';
-  static const String route = '/';
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -36,9 +35,7 @@ class _LoginPageState extends State<LoginPage> {
       try {
         UserCredential userCredential = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: _email, password: _password);
-        // The following line makes state change less laggy, but it defeats the purpose of listening to auth state changes
-        // Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomePage(name: 'Hi',)),);
-        print("yay");
+        print("signed in");
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {
           showDialog(
