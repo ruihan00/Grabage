@@ -35,7 +35,7 @@ class _RecyclingHistoryPageState extends State<RecyclingHistoryPage> {
           appBar: AppBar(
               foregroundColor: titleColor,
               backgroundColor: green,
-              title: const Center(child: Text('Recycling History'))),
+              title: Text('Recycling History')),
           body: Center(
             child: SingleChildScrollView(
               child: Column(

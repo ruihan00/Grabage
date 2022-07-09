@@ -21,6 +21,7 @@ class _RewardsPageState extends State<RewardsPage> {
 
   @override
   Widget build(BuildContext context) {
+    var total_creds = 100;
     return WillPopScope(
       onWillPop: () async => false,
       child: GestureDetector(
@@ -32,9 +33,55 @@ class _RewardsPageState extends State<RewardsPage> {
           // );
         },
         child: Scaffold(
-          appBar: buildAppbar(context),
-          body: const Center(
-            child: Text('Rewards Page!'),
+          appBar: AppBar(
+              foregroundColor: titleColor,
+              backgroundColor: green,
+              title: Text('Rewards')),
+          body: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    width: 300,
+                    height: 300,
+                    child: const Image(
+                      image: AssetImage('assets/images/recycling_bin.jpg'),
+                    ),
+                  ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 150,
+                decoration: BoxDecoration(color: cream, border: Border.all(color: green)),
+                child: Stack(
+                  children: [
+                  Padding(
+                      padding: const EdgeInsets.fromLTRB(20.0, 25.0, 20.0, 0.0),
+                      child: Text("You have " + total_creds.toString() + " Grabage credits!", style: TextStyle(fontSize: 20))),
+              ],
+                ),
+              ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 150,
+                    decoration: BoxDecoration(color: cream, border: Border.all(color: green)),
+                    child: Stack(
+                      children: [
+                    Padding(
+                    padding: const EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 0.0),
+                      child:
+                      Text("Latest Rewards", style: TextStyle(fontSize: 20))),
+                        Padding(
+                            padding: const EdgeInsets.fromLTRB(200.0, 25.0, 100.0, 0.0),
+                            child: Text("5 dollar voucher", style: TextStyle(fontSize: 20))),
+                        Padding(
+                            padding: const EdgeInsets.fromLTRB(200.0, 90.0, 0.0, 0.0),
+                            child: Text("1200 creds", style: TextStyle(fontSize: 20))),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
           drawer: buildSidebar(context),
         ),
