@@ -21,10 +21,10 @@ const Color titleColor = Color(0xFF3B3B3B);
 const Color red = Color(0xFFdc5445);
 const Color yellow = Color(0xFFffdc81);
 const Color cream = Color(0xFFfff9f6);
-const Color green = Color(0xffa2c954);
+const Color green = Color(0xff8ba986);
 
 const LinearGradient loginBackground = LinearGradient(
-  colors: <Color>[Color(0xffc8dda4), Color(0xff93bc3f)],
+  colors: <Color>[Color(0xffc4d4bd), Color(0xff94a48a)],
   begin: Alignment.topCenter,
   end: Alignment.bottomCenter,
 );
@@ -45,7 +45,7 @@ const signupTextFieldDecoration = InputDecoration(
     borderRadius: BorderRadius.all(Radius.circular(15.0)),
   ),
   focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Color(0xff93bc3f), width: 1.0),
+    borderSide: BorderSide(color: Color(0xff8ba986), width: 1.0),
     borderRadius: BorderRadius.all(Radius.circular(15.0)),
   ),
   errorBorder: OutlineInputBorder(
