@@ -45,18 +45,21 @@ class _RewardsPageState extends State<RewardsPage> {
                     width: 300,
                     height: 300,
                     child: const Image(
-                      image: AssetImage('assets/images/recycling_bin.jpg'),
+                      image: AssetImage('assets/images/recycling_bin.png'),
                     ),
                   ),
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: 150,
+                height: 130,
                 decoration: BoxDecoration(color: cream, border: Border.all(color: green)),
                 child: Stack(
                   children: [
                   Padding(
                       padding: const EdgeInsets.fromLTRB(20.0, 25.0, 20.0, 0.0),
-                      child: Text("You have " + total_creds.toString() + " Grabage credits!", style: TextStyle(fontSize: 20))),
+                      child: Text("You have ", style: TextStyle(fontSize: 20))),
+                    Padding(
+                        padding: const EdgeInsets.fromLTRB(20.0, 75.0, 20.0, 0.0),
+                        child: Text(total_creds.toString() + " Grabage credits!", style: TextStyle(fontSize: 20))),
               ],
                 ),
               ),
@@ -67,15 +70,25 @@ class _RewardsPageState extends State<RewardsPage> {
                     child: Stack(
                       children: [
                     Padding(
-                    padding: const EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 0.0),
+                    padding: const EdgeInsets.fromLTRB(10.0, 30.0, 0.0, 0.0),
                       child:
                       Text("Latest Rewards", style: TextStyle(fontSize: 20))),
                         Padding(
-                            padding: const EdgeInsets.fromLTRB(200.0, 25.0, 100.0, 0.0),
+                          padding: const EdgeInsets.fromLTRB(10.0, 30.0, 0.0, 0.0),
+                          child: Container(
+                            width: 100,
+                            height: 100,
+                            child: const Image(
+                              image: AssetImage('assets/images/voucher.png'),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                            padding: const EdgeInsets.fromLTRB(200.0, 35.0, 100.0, 0.0),
                             child: Text("5 dollar voucher", style: TextStyle(fontSize: 20))),
                         Padding(
-                            padding: const EdgeInsets.fromLTRB(200.0, 90.0, 0.0, 0.0),
-                            child: Text("1200 creds", style: TextStyle(fontSize: 20))),
+                            padding: const EdgeInsets.fromLTRB(200.0, 100.0, 0.0, 0.0),
+                            child: Text("1200 credits", style: TextStyle(fontSize: 20))),
                       ],
                     ),
                   ),

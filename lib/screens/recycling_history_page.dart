@@ -40,11 +40,11 @@ class _RecyclingHistoryPageState extends State<RecyclingHistoryPage> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  buildHistory(context, "ur mom", "8 Jul 2022", "22"),
-                  buildHistory(context, "ur mom", "8 Jul 2022", "22"),
-                  buildHistory(context, "ur mom", "8 Jul 2022", "22"),
-                  buildHistory(context, "ur mom", "8 Jul 2022", "22"),
-                  buildHistory(context, "ur mom", "8 Jul 2022", "22"),
+                  buildHistory(context, "coke can", "6 Jul 2022", "10"),
+                  buildHistory(context, "plastic bottle", "7 Jul 2022", "10"),
+                  buildHistory(context, "can", "8 Jul 2022", "10"),
+                  buildHistory(context, "can", "9 Jul 2022", "10"),
+                  buildHistory(context, "bottle", "10 Jul 2022", "10"),
                 ],
               ),
             ),
