@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "574985743484",
+    "project_id": "grabage-bda02",
+    "storage_bucket": "grabage-bda02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574985743484:android:7a786da650992164e2edf9",
+        "android_client_info": {
+          "package_name": "com.grabage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574985743484-93dacj5eigrd49c3ig9kqne465v9h8ua.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBL7uRK1aY6L4IE5e_6nYKlTjO4cmDmyE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574985743484-93dacj5eigrd49c3ig9kqne465v9h8ua.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574985743484-vvajjcfm6hhcflji4df0d9ikbh8pirn1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "grabage"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
