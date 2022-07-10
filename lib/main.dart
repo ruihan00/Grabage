@@ -1,9 +1,13 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:grabage/screens/home_page.dart';
 import 'package:grabage/screens/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:grabage/constant.dart';
+
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +30,6 @@ void main() async {
   } else {
     Firebase.app(); // if already initialized, use that one
   }
-
   runApp(const MyApp());
 }
 
